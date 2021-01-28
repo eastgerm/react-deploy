@@ -30,7 +30,7 @@ podTemplate(label: 'builder',
 
         stage('Docker build') {
             container('docker') {
-                sh "ls /var/run"
+                sh "systemctl start docker"
                 withCredentials([usernamePassword(
                     credentialsId: 'docker_hub_auth',
                     usernameVariable: "USERNAME",
