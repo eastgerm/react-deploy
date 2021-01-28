@@ -1,9 +1,10 @@
 /* pipeline 변수 설정 */
+def DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
+def DATE = new Date();
 def DOCKER_IMAGE_NAME = "dowk0331/react-deploy"           // 생성하는 Docker image 이름
-def DOCKER_IMAGE_TAGS = new Date();  // 생성하는 Docker image 태그
+def DOCKER_IMAGE_TAGS = DATE_FORMAT.format(DATE);  // 생성하는 Docker image 태그
 def EMAIL = "gyun.kimdong@navercorp.com"
 def NAMESPACE = "ns-project"
-def DATE = new Date();
 
 podTemplate(label: 'builder',
             containers: [
