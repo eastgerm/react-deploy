@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react
+  template:
+    metadata:
+      labels:
+        app: react
+    spec:
+      containers:
+        - name: nginx
+          image: gyun-registry.kr.ncr.ntruss.com/react-test:0.1
+          imagePullPolicy: Always
+          securityContext:
+            runAsUser: 0
+            allowPrivilegeEscalation: false
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "1024Mi"
+              cpu: "4000m"
+          ports:
+            - containerPort: 80
+              name: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-service
+  labels:
+    app: react
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      name: web
+  selector:
+    app: react
