@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          ci/cd가 잘 되었을까용..
+          ci/cd가 잘 되었을까용..?
         </p>
         <a
           className="App-link"
