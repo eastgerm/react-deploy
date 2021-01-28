@@ -13,7 +13,7 @@ podTemplate(label: 'builder',
             ],
             volumes: [
                 //hostPathVolume(mountPath: '/home/gradle/.gradle', hostPath: '/home/admin/k8s/jenkins/.gradle'),
-                hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/containerd/containerd.sock'),
+                hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
                 //hostPathVolume(mountPath: '/usr/bin/docker', hostPath: '/usr/bin/docker')
             ]) {
     node('builder') {
